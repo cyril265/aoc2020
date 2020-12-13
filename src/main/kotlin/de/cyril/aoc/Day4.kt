@@ -1,7 +1,5 @@
 package de.cyril.aoc
 
-private val regex = Regex("(?<min>\\d+)-(?<max>\\d+) (?<character>\\w): (?<pw>\\w+)")
-
 
 fun readLines(): List<String> {
     return ClassLoader.getSystemResource("day4.txt")
