@@ -31,13 +31,13 @@ fun second() {
     val result = input.asSequence()
         .flatMap { firstNumber ->
             input.filter { it != firstNumber }
-                .map { secondNumber -> Fuppes(firstNumber, secondNumber) }
+                .map { secondNumber -> NumberPair(firstNumber, secondNumber) }
                 .filter { (_, _, sum) -> sum < 2020 }
                 .asSequence()
         }
         .mapNotNull { (first, second, sum) ->
             val third = input.filter { it != first && it != second }
-                .find { x -> x + sum == 2020 }
+                .find { it + sum == 2020 }
             if (third != null) {
                 first * second * third
             } else {
@@ -49,4 +49,4 @@ fun second() {
     println(result)
 }
 
-private data class Fuppes(val first: Int, val second: Int, val sum: Int = first + second)
+private data class NumberPair(val first: Int, val second: Int, val sum: Int = first + second)
