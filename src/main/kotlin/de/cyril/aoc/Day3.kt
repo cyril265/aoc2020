@@ -1,6 +1,6 @@
 package de.cyril.aoc
 
-private val lines: List<List<Boolean>> = InputReader.readLines("Day3.txt")
+private val lines: List<List<Boolean>> = InputReader.readLines("day3.txt")
     .map { line ->
         line.map { it == '#' }
     }

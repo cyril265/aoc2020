@@ -3,7 +3,7 @@ package de.cyril.aoc
 
 fun main() {
     val regex = Regex("(?<min>\\d+)-(?<max>\\d+) (?<character>\\w): (?<pw>\\w+)")
-    val mappedInput = InputReader.readLines("Day2.txt")
+    val mappedInput = InputReader.readLines("day2.txt")
         .map {
             val (min, max, character, pw) = regex.matchEntire(it)!!.destructured
             PasswordInput(min.toInt(), max.toInt(), character[0], pw)

@@ -1,7 +1,7 @@
 package de.cyril.aoc
 
 
-private val input = InputReader.readLines("Day1.txt")
+private val input = InputReader.readLines("day1.txt")
     .map { it.toInt() }
 
 fun main() {
