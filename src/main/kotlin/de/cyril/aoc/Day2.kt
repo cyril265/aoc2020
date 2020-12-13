@@ -9,9 +9,24 @@ fun main() {
             PasswordInput(min.toInt(), max.toInt(), character[0], pw)
         }
 
+    part1(mappedInput)
+    part2(mappedInput)
+}
+
+private fun part1(mappedInput: List<PasswordInput>) {
     val validPasswords = mappedInput.count { passwordInput ->
         val characterCount = passwordInput.pw.count { passwordInput.character == it }
         characterCount >= passwordInput.min && characterCount <= passwordInput.max
+    }
+    println(validPasswords)
+}
+
+private fun part2(mappedInput: List<PasswordInput>) {
+    val validPasswords = mappedInput.count { passwordInput ->
+        val firstChar = passwordInput.pw.elementAtOrNull(passwordInput.min - 1)
+        val secondChar = passwordInput.pw.elementAtOrNull(passwordInput.max - 1)
+
+        (firstChar == passwordInput.character) xor (secondChar == passwordInput.character)
     }
     println(validPasswords)
 }

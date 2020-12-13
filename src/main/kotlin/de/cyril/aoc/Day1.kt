@@ -5,11 +5,11 @@ private val input = InputReader.readLines("Day1.txt")
     .map { it.toInt() }
 
 fun main() {
-    first()
-    second()
+    part1()
+    part2()
 }
 
-private fun first() {
+private fun part1() {
     val result = input.asSequence()
         .mapNotNull { firstNumber -> multiplyIfMatches(firstNumber) }
         .first()
@@ -27,7 +27,7 @@ fun multiplyIfMatches(firstNumber: Int): Int? {
     }
 }
 
-fun second() {
+private fun part2() {
     val result = input.asSequence()
         .flatMap { firstNumber ->
             input.filter { it != firstNumber }
