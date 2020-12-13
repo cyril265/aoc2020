@@ -5,13 +5,18 @@ private val input = InputReader.readLines("Day1.txt")
     .map { it.toInt() }
 
 fun main() {
+    first()
+    second()
+}
+
+private fun first() {
     val result = input.asSequence()
-        .mapNotNull { firstNumber -> sumIfMatches(firstNumber) }
+        .mapNotNull { firstNumber -> multiplyIfMatches(firstNumber) }
         .first()
     println(result)
 }
 
-fun sumIfMatches(firstNumber: Int): Int? {
+fun multiplyIfMatches(firstNumber: Int): Int? {
     val matchingSecondNumber = input.filter { it != firstNumber }
         .find { secondNumber -> secondNumber + firstNumber == 2020 }
 
@@ -20,3 +25,27 @@ fun sumIfMatches(firstNumber: Int): Int? {
     } else
         null
 }
+
+fun second() {
+    val result = input.asSequence()
+        .flatMap { firstNumber ->
+            input.filter { it != firstNumber }
+                .map { secondNumber -> Fuppes(firstNumber, secondNumber) }
+                .filter { (_, _, sum) -> sum < 2020 }
+                .asSequence()
+        }
+        .mapNotNull { (first, second, sum) ->
+            val third = input.filter { it != first && it != second }
+                .find { x -> x + sum == 2020 }
+            if (third != null) {
+                first * second * third
+            } else {
+                null
+            }
+        }
+        .first()
+
+    println(result)
+}
+
+private data class Fuppes(val first: Int, val second: Int, val sum: Int = first + second)
