@@ -27,16 +27,16 @@ private fun part1() {
 
 
 private val validatedFields = arrayOf(
-    Field("byr") { value -> checkBetween(value, 1920, 2002) },
-    Field("iyr") { value -> checkBetween(value, 2010, 2020) },
-    Field("eyr") { value -> checkBetween(value, 2020, 2030) },
+    Field("byr") { value -> isBetween(value, 1920, 2002) },
+    Field("iyr") { value -> isBetween(value, 2010, 2020) },
+    Field("eyr") { value -> isBetween(value, 2020, 2030) },
     Field("hgt") { value ->
         when {
             value.endsWith("cm") -> {
-                checkBetween(value.substringBefore("cm"), 150, 193)
+                isBetween(value.substringBefore("cm"), 150, 193)
             }
             value.endsWith("in") -> {
-                checkBetween(value.substringBefore("in"), 59, 76)
+                isBetween(value.substringBefore("in"), 59, 76)
             }
             else -> {
                 false
@@ -52,7 +52,7 @@ private val validatedFields = arrayOf(
 )
 
 private fun isHex(value: String) = value.all { it.isDigit() || it in arrayOf('a', 'b', 'c', 'd', 'e', 'f') }
-private fun checkBetween(value: String, start: Int, end: Int) = value.toIntOrNull()?.let { it in start..end } == true
+private fun isBetween(value: String, start: Int, end: Int) = value.toIntOrNull()?.let { it in start..end } == true
 
 private fun part2() {
     val passports = readLines()
