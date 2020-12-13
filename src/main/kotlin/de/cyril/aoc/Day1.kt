@@ -22,8 +22,9 @@ fun multiplyIfMatches(firstNumber: Int): Int? {
 
     return if (matchingSecondNumber != null) {
         matchingSecondNumber * firstNumber;
-    } else
+    } else {
         null
+    }
 }
 
 fun second() {
