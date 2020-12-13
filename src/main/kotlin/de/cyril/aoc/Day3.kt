@@ -13,7 +13,7 @@ fun main() {
 
     val treeCount = (1 until lines.size).count {
         columnIndex = (columnIndex + 3) % columnCount
-        lineIndex += 1
+        lineIndex++
         lines[lineIndex][columnIndex]
     }
 
