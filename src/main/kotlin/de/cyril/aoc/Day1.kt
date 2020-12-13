@@ -1,8 +1,7 @@
 package de.cyril.aoc
 
 
-val input = ClassLoader.getSystemResource("Day1.txt").readText()
-    .split("\r\n")
+private val input = InputReader.readLines("Day1.txt")
     .map { it.toInt() }
 
 fun main() {
