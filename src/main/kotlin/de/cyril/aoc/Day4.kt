@@ -58,15 +58,15 @@ private fun part2() {
     val passports = readLines()
     val count = passports
         .count { passport ->
-            validatedFields.all {
-                val field = getField(passport, it.name)
-                it.validate(field)
+            validatedFields.all { field ->
+                val value = getFieldValue(passport, field.name)
+                field.validate(value)
             }
         }
     println(count)
 }
 
 private fun hasField(passport: String, name: String) = passport.contains("$name:")
-private fun getField(passport: String, name: String) = passport.substringAfter("$name:").substringBefore(" ")
+private fun getFieldValue(passport: String, name: String) = passport.substringAfter("$name:").substringBefore(" ")
 
 private class Field(val name: String, val validate: (String) -> Boolean)
