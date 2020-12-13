@@ -7,9 +7,7 @@ val input = ClassLoader.getSystemResource("Day1.txt").readText()
 
 fun main() {
     val result = input.asSequence()
-        .mapNotNull { firstNumber ->
-            sumIfMatches(firstNumber)
-        }
+        .mapNotNull { firstNumber -> sumIfMatches(firstNumber) }
         .first()
     println(result)
 }
